@@ -1,7 +1,9 @@
 Qualtrics.SurveyEngine.addOnload(function()
 {
-	/*Overwrite show method with original method + hide container after X ms*/
-	/*Proudly developed by Janjaap Ree - V0.2*/
+	/*
+	Overwrite show method with original method + hide container after X ms
+	Proudly developed by Janjaap Ree - V0.2
+	*/
 	var self = this;
 	self.oldShow = this.question.show;
 	
