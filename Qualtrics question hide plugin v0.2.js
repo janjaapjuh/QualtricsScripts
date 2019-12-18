@@ -12,23 +12,21 @@ Qualtrics.SurveyEngine.addOnload(function()
 	Proudly developed by Janjaap Ree - V0.2
 	*/
 	var self = this;
-	
-	this.questionclick = function(event,element)
-    {
-        //by default you get the click event as the first parameter and the clicked element as the second parameter
+	this.questionclick = function(event,element){
+        // By default you get the click event as the first parameter and the clicked element as the second parameter
         if (element.type == 'radio' || element.type == 'checkbox')
         {
-            var choiceNum = element.id.split('~')[2];
-			var choiceInfo = self.question.runtime.Choices[choiceNum];
-			if (element.type == 'radio' || choiceInfo.Selected){
-				var embeddedData = Qualtrics.SurveyEngine.getEmbeddedData("OptionsSelected");
-				if (embeddedData != null) {
-					Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", embeddedData + ", " + "[" + self.questionId + "]" + choiceInfo.Display);
-				}
-				else {
-					Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", "[" + self.questionId + "]" + choiceInfo.Display);
-				}
+            	var choiceNum = element.id.split('~')[2];
+		var choiceInfo = self.question.runtime.Choices[choiceNum];
+		if (element.type == 'radio' || choiceInfo.Selected){
+			var embeddedData = Qualtrics.SurveyEngine.getEmbeddedData("OptionsSelected");
+			if (embeddedData != null) {
+				Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", embeddedData + ", " + "[" + self.questionId + "]" + choiceInfo.Display);
 			}
+			else {
+				Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", "[" + self.questionId + "]" + choiceInfo.Display);
+			}
+		}
         }
     }
 });
