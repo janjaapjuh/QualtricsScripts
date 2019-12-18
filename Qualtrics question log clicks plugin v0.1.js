@@ -12,23 +12,22 @@ Qualtrics.SurveyEngine.addOnload(function()
 	Proudly developed by Janjaap Ree - V0.1
 	*/
     var self = this;
-    
-	this.questionclick = function(event,element)
+    this.questionclick = function(event,element)
     {
         // Only log the click of the user when it consists of a MPC question.
         if (element.type == 'radio' || element.type == 'checkbox')
         {
-            var choiceNum = element.id.split('~')[2];
-            var choiceInfo = self.question.runtime.Choices[choiceNum];
-            // Make sure, in case of a checkbox, that the log is only created if it is checked and not when unchecked.
-			if (element.type == 'radio' || choiceInfo.Selected){
-                var embeddedData = Qualtrics.SurveyEngine.getEmbeddedData("OptionsSelected");
-                // If there is no embedded data yet, initialise the list.
-				if (embeddedData != null)
-					Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", embeddedData + ", " + "[" + self.questionId + "]" + choiceInfo.Display);
-				else
-					Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", "[" + self.questionId + "]" + choiceInfo.Display);
-			}
+           	var choiceNum = element.id.split('~')[2];
+           	var choiceInfo = self.question.runtime.Choices[choiceNum];
+            	// Make sure, in case of a checkbox, that the log is only created if it is checked and not when unchecked.
+		if (element.type == 'radio' || choiceInfo.Selected){
+			var embeddedData = Qualtrics.SurveyEngine.getEmbeddedData("OptionsSelected");
+			// If there is no embedded data yet, initialise the list.
+			if (embeddedData != null)
+				Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", embeddedData + ", " + "[" + self.questionId + "]" + choiceInfo.Display);
+			else
+				Qualtrics.SurveyEngine.setEmbeddedData("OptionsSelected", "[" + self.questionId + "]" + choiceInfo.Display);
+		}
         }
     }
 });
