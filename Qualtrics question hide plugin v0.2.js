@@ -9,7 +9,7 @@ Qualtrics.SurveyEngine.addOnload(function()
 	2. Set autonumbering under tools to use internal ID's for questions.
 	3. Add this script to MPC questions.
 	
-	Proudly developed by Janjaap Ree - V0.1
+	Proudly developed by Janjaap Ree - V0.2
 	*/
 	var self = this;
 	
